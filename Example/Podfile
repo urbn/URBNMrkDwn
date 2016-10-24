@@ -1,0 +1,9 @@
+use_frameworks!
+
+target 'Example' do
+  pod 'URBNMrkDwn', :path => '../'
+
+  target 'ExampleTests' do
+    inherit! :search_paths
+  end
+end
