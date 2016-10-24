@@ -30,4 +30,6 @@ Pod::Spec.new do |s|
 
   s.source_files = 'URBNMrkDwn/Classes/**/*'
 
+  s.dependency 'cmark'
+
 end
