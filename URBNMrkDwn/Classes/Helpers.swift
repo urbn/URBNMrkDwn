@@ -10,7 +10,7 @@ import Foundation
 import cmark
 
 /// MrkDwn Rendering Errors
-public enum RenderErrors: Error {
+public enum MrkDwnRenderErrors: Error {
     /// Error converting Markdown to AST (Abstract Syntax Tree)
     case toASTError
 
