@@ -23,6 +23,7 @@
 		41CD42DB27C5314E528644760891A2F4 /* latex.c in Sources */ = {isa = PBXBuildFile; fileRef = 156BCA7ECB57233C9C1BF3EA04EE0A5A /* latex.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		4394E4B441D7B90624CD08F422AA5231 /* cmark_version.h in Headers */ = {isa = PBXBuildFile; fileRef = E170FC9DC9E7F1581C6E8957470521AB /* cmark_version.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4517A5821DBFAED100EF8022 /* String+MrkDwn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4517A5811DBFAED100EF8022 /* String+MrkDwn.swift */; };
+		4517A5841DBFC30B00EF8022 /* NSAttributedString+MrkDwn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4517A5831DBFC30B00EF8022 /* NSAttributedString+MrkDwn.swift */; };
 		480652F5D2E65E2421C00014B4B8B91D /* node.c in Sources */ = {isa = PBXBuildFile; fileRef = C18E4F959E1B176C2D1959044487EE9A /* node.c */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		49C9DFC62B34277540594AE48C7AD8DE /* houdini.h in Headers */ = {isa = PBXBuildFile; fileRef = EE5AE9A0233F617EC9C66A5FF7CDF5A0 /* houdini.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4AA2B6620DFA8247B75657855A5D0ABD /* buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = CCB78C20FBB29CB6F185B08ECED5FFB3 /* buffer.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -113,6 +114,7 @@
 		3CB1617C564754AA851CF65D181EDCED /* inlines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = inlines.h; path = src/inlines.h; sourceTree = "<group>"; };
 		401403C470ED309087DE8BA823787235 /* cmark_ctype.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = cmark_ctype.c; path = src/cmark_ctype.c; sourceTree = "<group>"; };
 		4517A5811DBFAED100EF8022 /* String+MrkDwn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MrkDwn.swift"; sourceTree = "<group>"; };
+		4517A5831DBFC30B00EF8022 /* NSAttributedString+MrkDwn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+MrkDwn.swift"; sourceTree = "<group>"; };
 		4B0924F376B2DA786E4F32D168EE3FDB /* Pods-ExampleTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ExampleTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4B648FE4D054AE73B2DEE1A1AE7F8E5E /* URBNMrkDwn-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "URBNMrkDwn-dummy.m"; sourceTree = "<group>"; };
 		520D5F99525C72C3724539F504D67F6C /* Pods-Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Example-dummy.m"; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 				B5822B4E0215D97A10F080133A89E81F /* Helpers.swift */,
 				D1FBC05D7A619CFAE3E83292F6A423FD /* Renderers.swift */,
 				4517A5811DBFAED100EF8022 /* String+MrkDwn.swift */,
+				4517A5831DBFC30B00EF8022 /* NSAttributedString+MrkDwn.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				3564878713C4A1ECB90614FC38BA44DF /* Helpers.swift in Sources */,
 				4517A5821DBFAED100EF8022 /* String+MrkDwn.swift in Sources */,
 				255724AB6B6ED48A41F1C717068119B9 /* Renderers.swift in Sources */,
+				4517A5841DBFC30B00EF8022 /* NSAttributedString+MrkDwn.swift in Sources */,
 				52D318865A10C4596A9365B4550DCD9F /* URBNMrkDwn-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
