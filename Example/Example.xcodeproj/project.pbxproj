@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A6880D42CB1EF2DC15F79E0 /* Pods_ExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F39993F10B9973C6FE02F20 /* Pods_ExampleTests.framework */; };
+		4517A5861DBFC79A00EF8022 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4517A5851DBFC79A00EF8022 /* TestHelpers.swift */; };
 		458C24931DBF8DCB00BC2D17 /* HTMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458C24921DBF8DCB00BC2D17 /* HTMLTests.swift */; };
 		45AF6A1D1DBD52E600F5E3FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AF6A1C1DBD52E600F5E3FE /* AppDelegate.swift */; };
 		45AF6A1F1DBD52E600F5E3FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AF6A1E1DBD52E600F5E3FE /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		3675F3587F4E69F9072160A5 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
+		4517A5851DBFC79A00EF8022 /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		458C24921DBF8DCB00BC2D17 /* HTMLTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLTests.swift; sourceTree = "<group>"; };
 		45AF6A191DBD52E600F5E3FE /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45AF6A1C1DBD52E600F5E3FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		45AF6A301DBD52E600F5E3FE /* ExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				4517A5851DBFC79A00EF8022 /* TestHelpers.swift */,
 				458C24921DBF8DCB00BC2D17 /* HTMLTests.swift */,
 				45AF6A331DBD52E600F5E3FE /* Info.plist */,
 			);
@@ -342,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				458C24931DBF8DCB00BC2D17 /* HTMLTests.swift in Sources */,
+				4517A5861DBFC79A00EF8022 /* TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
