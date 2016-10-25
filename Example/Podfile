@@ -2,7 +2,6 @@ use_frameworks!
 
 target 'Example' do
   pod 'URBNMrkDwn', :path => '../'
-#   pod 'cmark'
 
   target 'ExampleTests' do
     inherit! :search_paths
