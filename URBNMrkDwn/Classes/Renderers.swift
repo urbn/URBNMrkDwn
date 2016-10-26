@@ -22,16 +22,9 @@ public struct MrkDwnRenderers {
      - returns: An OpaquePointer for the AST
      */
     public static func renderASTFromMarkdown(_ markdown: String, options: MrkDwnOptions = .default) throws -> OpaquePointer {
-        var node: OpaquePointer?
+        guard let node = cmark_parse_document(markdown, markdown.utf8.count, options.rawValue) as? OpaquePointer else { throw MrkDwnRenderErrors.toASTError }
         
-        markdown.withCString {
-            let l = Int(strlen($0))
-            node = cmark_parse_document($0, l, options.rawValue) as? OpaquePointer
-        }
-        
-        guard let ast = node else { throw MrkDwnRenderErrors.toASTError }
-        
-        return ast
+        return node
     }
     
     /**
@@ -48,27 +41,24 @@ public struct MrkDwnRenderers {
     public static func renderHTMLFromAST(_ ast: OpaquePointer, options: MrkDwnOptions = .default) throws -> String {
         guard let cString = cmark_render_html(ast, options.rawValue) else { throw MrkDwnRenderErrors.astRenderingError }
         defer { free(cString) }
-        guard let string = String(cString: cString, encoding: String.Encoding.utf8) else { throw MrkDwnRenderErrors.astRenderingError }
         
-        return string
+        return String(cString: cString)
     }
     
     /**
-     Converts a Markdown string to an AST. Calls through to `renderASTFromMarkdown(_:, options:)` & `renderHTMLFromAST(_:, options:)`
+     Converts a Markdown string to an AST.
      
      - parameter markdown: String containing Markdown
      
      - parameter options: `MrkDwnOptions` defaults to `MrkDwnOptions.default`. Options for rendering markdown to HTML.
      
-     - throws: `MrkDwnRenderErrors`
+     - throws: `MrkDwnRenderErrors.markdownToHTMLError`
      
      - returns: An HTML String
      */
     public static func renderHTMLFromMarkdown(_ markdown: String, options: MrkDwnOptions = .default) throws -> String {
-        let ast = try MrkDwnRenderers.renderASTFromMarkdown(markdown, options: options)
-        defer { cmark_node_free(ast) }
-        let html = try MrkDwnRenderers.renderHTMLFromAST(ast, options: options)
+        guard let html = cmark_markdown_to_html(markdown, markdown.utf8.count, options.rawValue) else { throw MrkDwnRenderErrors.markdownToHTMLError }
         
-        return html
+        return String(cString: html)
     }
 }

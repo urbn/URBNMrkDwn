@@ -17,6 +17,9 @@ public enum MrkDwnRenderErrors: Error {
     /// Error rendering AST to another format (e.g. HTML)
     case astRenderingError
 
+    /// Error rendering Markdown to HTML string
+    case markdownToHTMLError
+    
     /// Error converting HTML String to NSData
     case htmlDataConversionError
 }
