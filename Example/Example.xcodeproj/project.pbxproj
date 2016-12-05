@@ -25,6 +25,10 @@
 		CB2CC02E1DF5E23400E36680 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB2CC02C1DF5E23400E36680 /* Main.storyboard */; };
 		CB2CC0301DF5E23500E36680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB2CC02F1DF5E23500E36680 /* Assets.xcassets */; };
 		CB2CC03B1DF5E23500E36680 /* TVExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2CC03A1DF5E23500E36680 /* TVExampleTests.swift */; };
+		CB2CC0511DF5E39100E36680 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4517A5851DBFC79A00EF8022 /* TestHelpers.swift */; };
+		CB2CC0521DF5E3C600E36680 /* HTMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458C24921DBF8DCB00BC2D17 /* HTMLTests.swift */; };
+		CB2CC0531DF5E3C900E36680 /* StringConvenienceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4517A5871DBFCBDD00EF8022 /* StringConvenienceTests.swift */; };
+		CB2CC0541DF5E3CB00E36680 /* AttributedStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4517A5891DBFCCD500EF8022 /* AttributedStringTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -605,6 +609,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB2CC03B1DF5E23500E36680 /* TVExampleTests.swift in Sources */,
+				CB2CC0541DF5E3CB00E36680 /* AttributedStringTests.swift in Sources */,
+				CB2CC0521DF5E3C600E36680 /* HTMLTests.swift in Sources */,
+				CB2CC0531DF5E3C900E36680 /* StringConvenienceTests.swift in Sources */,
+				CB2CC0511DF5E39100E36680 /* TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
