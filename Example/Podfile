@@ -7,3 +7,12 @@ target 'Example' do
     inherit! :search_paths
   end
 end
+
+
+target 'TVExample' do
+  pod 'URBNMrkDwn', :path => '../'
+
+  target 'TVExampleTests' do
+    inherit! :search_paths
+  end
+end
