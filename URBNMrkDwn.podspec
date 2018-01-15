@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'URBNMrkDwn'
-  s.version          = '0.2'
+  s.version          = '1.0'
   s.summary          = 'Swifty Markdown inspired by CocoaMarkdown.'
 
 # This description is used to generate tags and improve search results.
