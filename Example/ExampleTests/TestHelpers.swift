@@ -16,7 +16,7 @@ struct MarkDownSample {
     var attributedString: String? {
         guard let data = htmlString.data(using: .utf8) else { return nil }
         
-        let opt: [String: Any] = [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSNumber(value: String.Encoding.utf8.rawValue)]
+        let opt: [NSAttributedString.DocumentReadingOptionKey: Any] = [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: NSNumber(value: String.Encoding.utf8.rawValue)]
         let att = try? NSAttributedString(data: data, options: opt, documentAttributes: nil)
 
         return att?.string
