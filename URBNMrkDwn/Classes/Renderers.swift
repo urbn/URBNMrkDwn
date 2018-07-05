@@ -22,7 +22,7 @@ public struct MrkDwnRenderers {
      - returns: An OpaquePointer for the AST
      */
     public static func renderASTFromMarkdown(_ markdown: String, options: MrkDwnOptions = .default) throws -> OpaquePointer {
-        guard let node = cmark_parse_document(markdown, markdown.utf8.count, options.rawValue) as? OpaquePointer else { throw MrkDwnRenderErrors.toASTError }
+        guard let node = cmark_parse_document(markdown, markdown.utf8.count, options.rawValue) else { throw MrkDwnRenderErrors.toASTError }
         
         return node
     }
