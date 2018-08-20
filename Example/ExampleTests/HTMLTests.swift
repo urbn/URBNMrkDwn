@@ -12,7 +12,11 @@ import URBNMrkDwn
 class HTMLTests: XCTestCase {
     func testMarkDownToHTML() {
         for md in markdownSamples {
-            let renderedHTMLString = try? MrkDwnRenderers.renderHTMLFromMarkdown(md.markdownString)
+            guard let renderedHTMLString = try? MrkDwnRenderers.renderHTMLFromMarkdown(md.markdownString) else {
+                XCTFail("Should be working")
+                return
+            }
+            
             XCTAssertEqual(renderedHTMLString, md.htmlString, "rendered HTML did not match expected. Rendered = \(renderedHTMLString)")
         }
     }

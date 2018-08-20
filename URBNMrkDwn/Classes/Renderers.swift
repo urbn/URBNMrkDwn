@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import cmark
+import libcmark_gfm
 
 public struct MrkDwnRenderers {
     /**
@@ -21,7 +21,7 @@ public struct MrkDwnRenderers {
      
      - returns: An OpaquePointer for the AST
      */
-    public static func renderASTFromMarkdown(_ markdown: String, options: MrkDwnOptions = .default) throws -> OpaquePointer {
+    public static func renderASTFromMarkdown(_ markdown: String, options: MrkDwnOptions = .default) throws -> UnsafeMutablePointer<cmark_node> {
         guard let node = cmark_parse_document(markdown, markdown.utf8.count, options.rawValue) else { throw MrkDwnRenderErrors.toASTError }
         
         return node
@@ -38,8 +38,14 @@ public struct MrkDwnRenderers {
      
      - returns: An HTML String
      */
-    public static func renderHTMLFromAST(_ ast: OpaquePointer, options: MrkDwnOptions = .default) throws -> String {
-        guard let cString = cmark_render_html(ast, options.rawValue) else { throw MrkDwnRenderErrors.astRenderingError }
+    public static func renderHTMLFromAST(_ ast: UnsafeMutablePointer<cmark_node>, options: MrkDwnOptions = .default) throws -> String {
+        var extensions: UnsafeMutablePointer<cmark_llist>? = nil
+        
+//        if let tagfilter = cmark_find_syntax_extension("tagfilter") { // This feels like danger
+            //extensions = cmark_llist_append(cmark_get_default_mem_allocator(), nil, tagfilter)
+//        }
+        
+        guard let cString = cmark_render_html(ast, options.rawValue, extensions) else { throw MrkDwnRenderErrors.astRenderingError }
         defer { free(cString) }
         
         return String(cString: cString)

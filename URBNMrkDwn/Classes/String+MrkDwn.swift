@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import libcmark_gfm
 
 // MARK: String Convenience
 public extension String {
@@ -19,7 +20,7 @@ public extension String {
      
      - returns: An OpaquePointer for the AST
      */
-    public func toAST(withOptions options: MrkDwnOptions = .default) throws -> OpaquePointer {
+    public func toAST(withOptions options: MrkDwnOptions = .default) throws -> UnsafeMutablePointer<cmark_node> {
         return try MrkDwnRenderers.renderASTFromMarkdown(self, options: options)
     }
     

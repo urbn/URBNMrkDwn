@@ -432,12 +432,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/URBNMrkDwn-iOS/URBNMrkDwn.framework",
-				"${BUILT_PRODUCTS_DIR}/cmark-iOS/cmark.framework",
+				"${BUILT_PRODUCTS_DIR}/libcmark_gfm-iOS/libcmark_gfm.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URBNMrkDwn.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/cmark.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libcmark_gfm.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -470,12 +470,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TVExample/Pods-TVExample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/URBNMrkDwn-tvOS/URBNMrkDwn.framework",
-				"${BUILT_PRODUCTS_DIR}/cmark-tvOS/cmark.framework",
+				"${BUILT_PRODUCTS_DIR}/libcmark_gfm-tvOS/libcmark_gfm.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URBNMrkDwn.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/cmark.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libcmark_gfm.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

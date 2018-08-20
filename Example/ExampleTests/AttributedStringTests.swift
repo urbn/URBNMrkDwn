@@ -11,15 +11,23 @@ import XCTest
 class AttributedStringTests: XCTestCase {
     func testHTMLStringToAttributedString() {
         for md in markdownSamples {
-            let attributedString = try? NSAttributedString(htmlString: md.htmlString)
-            XCTAssertEqual(attributedString?.string, md.attributedString, "attributed string did not match expected. Attributed String = \(attributedString?.string)")
+            guard let attributedString = try? NSAttributedString(htmlString: md.htmlString) else {
+                XCTFail("Should be working")
+                return
+            }
+            
+            XCTAssertEqual(attributedString.string, md.attributedString, "attributed string did not match expected. Attributed String = \(attributedString.string)")
         }
     }
     
     func testMarkdownStringToAttributedString() {
         for md in markdownSamples {
-            let attributedString = try? NSAttributedString(markdownString: md.markdownString)
-            XCTAssertEqual(attributedString?.string, md.attributedString, "attributed string did not match expected. Attributed String = \(attributedString?.string)")
+            guard let attributedString = try? NSAttributedString(markdownString: md.markdownString) else {
+                XCTFail("Should be working")
+                return
+            }
+            
+            XCTAssertEqual(attributedString.string, md.attributedString, "attributed string did not match expected. Attributed String = \(attributedString.string)")
         }
     }
 }

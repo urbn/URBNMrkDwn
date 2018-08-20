@@ -1,22 +1,22 @@
 PODS:
-  - cmark (0.24.1)
-  - URBNMrkDwn (1.0):
-    - cmark
+  - libcmark_gfm (0.28.3)
+  - URBNMrkDwn (1.0.1):
+    - libcmark_gfm
 
 DEPENDENCIES:
   - URBNMrkDwn (from `../`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - cmark
+    - libcmark_gfm
 
 EXTERNAL SOURCES:
   URBNMrkDwn:
     :path: "../"
 
 SPEC CHECKSUMS:
-  cmark: ec0275215b504780287b6fca360224e384368af8
-  URBNMrkDwn: 894811013560216c43ddf4d7f7c30d37ba0697ae
+  libcmark_gfm: eeffeceb85cccf7db30231a6853a97a552e8422b
+  URBNMrkDwn: 077c76ba490b04461913182d7b572b5f3161e92e
 
 PODFILE CHECKSUM: 6c43142b299054fa431a3ab7b19597b6eb82679c
 

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import cmark
+import libcmark_gfm
 
 /// MrkDwn Rendering Errors
 public enum MrkDwnRenderErrors: Error {
