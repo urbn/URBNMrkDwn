@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import cmark
+import URBNcmark
 
 /// MrkDwn Rendering Errors
 public enum MrkDwnRenderErrors: Error {

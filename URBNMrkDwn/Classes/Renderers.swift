@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import cmark
+import URBNcmark
 
 public struct MrkDwnRenderers {
     /**
