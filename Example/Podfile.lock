@@ -1,23 +1,23 @@
 PODS:
-  - cmark (0.24.1)
-  - URBNMrkDwn (1.0):
-    - cmark
+  - URBNcmark (0.24.0)
+  - URBNMrkDwn (1.0.1):
+    - URBNcmark
 
 DEPENDENCIES:
   - URBNMrkDwn (from `../`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - cmark
+  "git@github.com:urbn/URBNPrivatePodSpec":
+    - URBNcmark
 
 EXTERNAL SOURCES:
   URBNMrkDwn:
     :path: "../"
 
 SPEC CHECKSUMS:
-  cmark: ec0275215b504780287b6fca360224e384368af8
-  URBNMrkDwn: 894811013560216c43ddf4d7f7c30d37ba0697ae
+  URBNcmark: 7d14be2e83727edf5b40d55404258b38f57025c4
+  URBNMrkDwn: 15ee2a953ff7be95c08d81c5df90813f5a29a541
 
-PODFILE CHECKSUM: 6c43142b299054fa431a3ab7b19597b6eb82679c
+PODFILE CHECKSUM: f6fb125c191a209dc09af96eb289caaf0a576e8e
 
 COCOAPODS: 1.5.3

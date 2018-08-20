@@ -1,3 +1,5 @@
+source 'git@github.com:urbn/URBNPrivatePodSpec.git'
+
 use_frameworks!
 
 target 'Example' do
