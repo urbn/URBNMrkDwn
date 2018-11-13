@@ -3,6 +3,8 @@ source 'git@github.com:urbn/URBNPrivatePodSpec.git'
 use_frameworks!
 
 target 'Example' do
+  platform :ios, '10.0'
+
   pod 'URBNMrkDwn', :path => '../'
 
   target 'ExampleTests' do
@@ -12,6 +14,8 @@ end
 
 
 target 'TVExample' do
+  platform :tvos, '9.0'
+
   pod 'URBNMrkDwn', :path => '../'
 
   target 'TVExampleTests' do

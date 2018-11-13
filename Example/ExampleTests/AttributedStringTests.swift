@@ -12,14 +12,14 @@ class AttributedStringTests: XCTestCase {
     func testHTMLStringToAttributedString() {
         for md in markdownSamples {
             let attributedString = try? NSAttributedString(htmlString: md.htmlString)
-            XCTAssertEqual(attributedString?.string, md.attributedString, "attributed string did not match expected. Attributed String = \(attributedString?.string)")
+            XCTAssertEqual(attributedString?.string, md.attributedString, "attributed string did not match expected. Attributed String = \(String(describing: attributedString?.string))")
         }
     }
     
     func testMarkdownStringToAttributedString() {
         for md in markdownSamples {
             let attributedString = try? NSAttributedString(markdownString: md.markdownString)
-            XCTAssertEqual(attributedString?.string, md.attributedString, "attributed string did not match expected. Attributed String = \(attributedString?.string)")
+            XCTAssertEqual(attributedString?.string, md.attributedString, "attributed string did not match expected. Attributed String = \(String(describing: attributedString?.string))")
         }
     }
 }

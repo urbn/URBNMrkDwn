@@ -13,7 +13,7 @@ class HTMLTests: XCTestCase {
     func testMarkDownToHTML() {
         for md in markdownSamples {
             let renderedHTMLString = try? MrkDwnRenderers.renderHTMLFromMarkdown(md.markdownString)
-            XCTAssertEqual(renderedHTMLString, md.htmlString, "rendered HTML did not match expected. Rendered = \(renderedHTMLString)")
+            XCTAssertEqual(renderedHTMLString, md.htmlString, "rendered HTML did not match expected. Rendered = \(String(describing: renderedHTMLString))")
         }
     }
 }
