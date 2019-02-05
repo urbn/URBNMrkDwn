@@ -28,6 +28,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
   s.ios.framework = 'UIKit'
   s.requires_arc  = true
+  s.swift_version = '4.2'
 
   s.source_files = 'URBNMrkDwn/Classes/**/*'
 
