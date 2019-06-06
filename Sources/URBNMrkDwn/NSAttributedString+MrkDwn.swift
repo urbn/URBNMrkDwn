@@ -19,7 +19,7 @@ public extension NSAttributedString {
      
      - returns: An attributed string
      */
-    public convenience init(htmlString: String) throws {
+    convenience init(htmlString: String) throws {
         guard let htmlData = htmlString.data(using: .utf8) else { throw MrkDwnRenderErrors.htmlDataConversionError }
         
         let opt: [NSAttributedString.DocumentReadingOptionKey: Any] = [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue]
@@ -38,7 +38,7 @@ public extension NSAttributedString {
      
      - returns: An attributed string
      */
-    public convenience init(markdownString: String, options: MrkDwnOptions = .default) throws {
+    convenience init(markdownString: String, options: MrkDwnOptions = .default) throws {
         let htmlString = try MrkDwnRenderers.renderHTMLFromMarkdown(markdownString, options: options)
 
         try self.init(htmlString: htmlString)
