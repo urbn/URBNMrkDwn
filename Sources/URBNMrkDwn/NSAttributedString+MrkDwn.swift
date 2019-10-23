@@ -6,9 +6,6 @@
 //
 //
 
-import Foundation
-
-#if !os(macOS)
 import UIKit
 
 public extension NSAttributedString {
@@ -46,4 +43,3 @@ public extension NSAttributedString {
         try self.init(htmlString: htmlString)
     }
 }
-#endif
