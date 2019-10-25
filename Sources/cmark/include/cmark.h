@@ -20,9 +20,8 @@ extern "C" {
  */
 
 /** Convert 'text' (assumed to be a UTF-8 encoded string with length
- * 'len') from CommonMark Markdown to HTML, returning a null-terminated,
- * UTF-8-encoded string. It is the caller's responsibility
- * to free the returned buffer.
+ * 'len' from CommonMark Markdown to HTML, returning a null-terminated,
+ * UTF-8-encoded string.
  */
 CMARK_EXPORT
 char *cmark_markdown_to_html(const char *text, size_t len, int options);
@@ -88,19 +87,6 @@ typedef struct cmark_parser cmark_parser;
 typedef struct cmark_iter cmark_iter;
 
 /**
- * ## Custom memory allocator support
- */
-
-/** Defines the memory allocation functions to be used by CMark
- * when parsing and allocating a document tree
- */
-typedef struct cmark_mem {
-  void *(*calloc)(size_t, size_t);
-  void *(*realloc)(void *, size_t);
-  void (*free)(void *);
-} cmark_mem;
-
-/**
  * ## Creating and Destroying Nodes
  */
 
@@ -110,14 +96,7 @@ typedef struct cmark_mem {
  */
 CMARK_EXPORT cmark_node *cmark_node_new(cmark_node_type type);
 
-/** Same as `cmark_node_new`, but explicitly listing the memory
- * allocator used to allocate the node.  Note:  be sure to use the same
- * allocator for every node in a tree, or bad things can happen.
- */
-CMARK_EXPORT cmark_node *cmark_node_new_with_mem(cmark_node_type type,
-                                                 cmark_mem *mem);
-
-/** Frees the memory allocated for a node and any children.
+/** Frees the memory allocated for a node.
  */
 CMARK_EXPORT void cmark_node_free(cmark_node *node);
 
@@ -200,9 +179,7 @@ typedef enum {
 } cmark_event_type;
 
 /** Creates a new iterator starting at 'root'.  The current node and event
- * type are undefined until 'cmark_iter_next' is called for the first time.
- * The memory allocated for the iterator should be released using
- * 'cmark_iter_free' when it is no longer needed.
+ * type are undefined until `cmark_iter_next` is called for the first time.
  */
 CMARK_EXPORT
 cmark_iter *cmark_iter_new(cmark_node *root);
@@ -265,8 +242,7 @@ CMARK_EXPORT
 const char *cmark_node_get_type_string(cmark_node *node);
 
 /** Returns the string contents of 'node', or an empty
-    string if none is set.  Returns NULL if called on a
-    node that does not have string content.
+    string if none is set.
  */
 CMARK_EXPORT const char *cmark_node_get_literal(cmark_node *node);
 
@@ -335,8 +311,7 @@ CMARK_EXPORT const char *cmark_node_get_fence_info(cmark_node *node);
 CMARK_EXPORT int cmark_node_set_fence_info(cmark_node *node, const char *info);
 
 /** Returns the URL of a link or image 'node', or an empty string
-    if no URL is set.  Returns NULL if called on a node that is
-    not a link or image.
+    if no URL is set.
  */
 CMARK_EXPORT const char *cmark_node_get_url(cmark_node *node);
 
@@ -346,8 +321,7 @@ CMARK_EXPORT const char *cmark_node_get_url(cmark_node *node);
 CMARK_EXPORT int cmark_node_set_url(cmark_node *node, const char *url);
 
 /** Returns the title of a link or image 'node', or an empty
-    string if no title is set.  Returns NULL if called on a node
-    that is not a link or image.
+    string if no title is set.
  */
 CMARK_EXPORT const char *cmark_node_get_title(cmark_node *node);
 
@@ -357,8 +331,7 @@ CMARK_EXPORT const char *cmark_node_get_title(cmark_node *node);
 CMARK_EXPORT int cmark_node_set_title(cmark_node *node, const char *title);
 
 /** Returns the literal "on enter" text for a custom 'node', or
-    an empty string if no on_enter is set.  Returns NULL if called
-    on a non-custom node.
+    an empty string if no on_enter is set.
  */
 CMARK_EXPORT const char *cmark_node_get_on_enter(cmark_node *node);
 
@@ -370,8 +343,7 @@ CMARK_EXPORT int cmark_node_set_on_enter(cmark_node *node,
                                          const char *on_enter);
 
 /** Returns the literal "on exit" text for a custom 'node', or
-    an empty string if no on_exit is set.  Returns NULL if
-    called on a non-custom node.
+    an empty string if no on_exit is set.
  */
 CMARK_EXPORT const char *cmark_node_get_on_exit(cmark_node *node);
 
@@ -446,7 +418,7 @@ CMARK_EXPORT void cmark_consolidate_text_nodes(cmark_node *root);
  * Streaming interface:
  *
  *     cmark_parser *parser = cmark_parser_new(CMARK_OPT_DEFAULT);
- *     FILE *fp = fopen("myfile.md", "rb");
+ *     FILE *fp = fopen("myfile.md", "r");
  *     while ((bytes = fread(buffer, 1, sizeof(buffer), fp)) > 0) {
  *     	   cmark_parser_feed(parser, buffer, bytes);
  *     	   if (bytes < sizeof(buffer)) {
@@ -461,11 +433,6 @@ CMARK_EXPORT void cmark_consolidate_text_nodes(cmark_node *root);
  */
 CMARK_EXPORT
 cmark_parser *cmark_parser_new(int options);
-
-/** Creates a new parser object with the given memory allocator
- */
-CMARK_EXPORT
-cmark_parser *cmark_parser_new_with_mem(int options, cmark_mem *mem);
 
 /** Frees memory allocated for a parser object.
  */
@@ -483,16 +450,13 @@ CMARK_EXPORT
 cmark_node *cmark_parser_finish(cmark_parser *parser);
 
 /** Parse a CommonMark document in 'buffer' of length 'len'.
- * Returns a pointer to a tree of nodes.  The memory allocated for
- * the node tree should be released using 'cmark_node_free'
- * when it is no longer needed.
+ * Returns a pointer to a tree of nodes.
  */
 CMARK_EXPORT
 cmark_node *cmark_parse_document(const char *buffer, size_t len, int options);
 
 /** Parse a CommonMark document in file 'f', returning a pointer to
- * a tree of nodes.  The memory allocated for the node tree should be
- * released using 'cmark_node_free' when it is no longer needed.
+ * a tree of nodes.
  */
 CMARK_EXPORT
 cmark_node *cmark_parse_file(FILE *f, int options);
@@ -501,33 +465,28 @@ cmark_node *cmark_parse_file(FILE *f, int options);
  * ## Rendering
  */
 
-/** Render a 'node' tree as XML.  It is the caller's responsibility
- * to free the returned buffer.
+/** Render a 'node' tree as XML.
  */
 CMARK_EXPORT
 char *cmark_render_xml(cmark_node *root, int options);
 
 /** Render a 'node' tree as an HTML fragment.  It is up to the user
- * to add an appropriate header and footer. It is the caller's
- * responsibility to free the returned buffer.
+ * to add an appropriate header and footer.
  */
 CMARK_EXPORT
 char *cmark_render_html(cmark_node *root, int options);
 
 /** Render a 'node' tree as a groff man page, without the header.
- * It is the caller's responsibility to free the returned buffer.
  */
 CMARK_EXPORT
 char *cmark_render_man(cmark_node *root, int options, int width);
 
 /** Render a 'node' tree as a commonmark document.
- * It is the caller's responsibility to free the returned buffer.
  */
 CMARK_EXPORT
 char *cmark_render_commonmark(cmark_node *root, int options, int width);
 
 /** Render a 'node' tree as a LaTeX document.
- * It is the caller's responsibility to free the returned buffer.
  */
 CMARK_EXPORT
 char *cmark_render_latex(cmark_node *root, int options, int width);
@@ -552,29 +511,19 @@ char *cmark_render_latex(cmark_node *root, int options, int width);
  */
 #define CMARK_OPT_HARDBREAKS (1 << 2)
 
-/** `CMARK_OPT_SAFE` is defined here for API compatibility,
-    but it no longer has any effect. "Safe" mode is now the default:
-    set `CMARK_OPT_UNSAFE` to disable it.
+/** Suppress raw HTML and unsafe links (`javascript:`, `vbscript:`,
+ * `file:`, and `data:`, except for `image/png`, `image/gif`,
+ * `image/jpeg`, or `image/webp` mime types).  Raw HTML is replaced
+ * by a placeholder HTML comment. Unsafe links are replaced by
+ * empty strings.
  */
 #define CMARK_OPT_SAFE (1 << 3)
-
-/** Render raw HTML and unsafe links (`javascript:`, `vbscript:`,
- * `file:`, and `data:`, except for `image/png`, `image/gif`,
- * `image/jpeg`, or `image/webp` mime types).  By default,
- * raw HTML is replaced by a placeholder HTML comment. Unsafe
- * links are replaced by empty strings.
- */
-#define CMARK_OPT_UNSAFE (1 << 17)
-
-/** Render `softbreak` elements as spaces.
- */
-#define CMARK_OPT_NOBREAKS (1 << 4)
 
 /**
  * ### Options affecting parsing
  */
 
-/** Legacy option (no effect).
+/** Normalize tree by consolidating adjacent text nodes.
  */
 #define CMARK_OPT_NORMALIZE (1 << 8)
 
@@ -601,13 +550,13 @@ char *cmark_render_latex(cmark_node *root, int options, int width);
  * In hexadecimal format, the number 0x010203 represents version 1.2.3.
  */
 CMARK_EXPORT
-int cmark_version(void);
+int cmark_version();
 
 /** The library version string for runtime checks. Also available as
  * macro CMARK_VERSION_STRING for compile time checks.
  */
 CMARK_EXPORT
-const char *cmark_version_string(void);
+const char *cmark_version_string();
 
 /** # AUTHORS
  *
