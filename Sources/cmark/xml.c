@@ -9,8 +9,6 @@
 #include "buffer.h"
 #include "houdini.h"
 
-#define BUFFER_SIZE 100
-
 // Functions to convert cmark_nodes to XML strings.
 
 static void escape_xml(cmark_strbuf *dest, const unsigned char *source,
@@ -23,7 +21,7 @@ struct render_state {
   int indent;
 };
 
-static CMARK_INLINE void indent(struct render_state *state) {
+static inline void indent(struct render_state *state) {
   int i;
   for (i = 0; i < state->indent; i++) {
     cmark_strbuf_putc(state->xml, ' ');
@@ -36,7 +34,7 @@ static int S_render_node(cmark_node *node, cmark_event_type ev_type,
   bool literal = false;
   cmark_delim_type delim;
   bool entering = (ev_type == CMARK_EVENT_ENTER);
-  char buffer[BUFFER_SIZE];
+  char buffer[100];
 
   if (entering) {
     indent(state);
@@ -44,9 +42,8 @@ static int S_render_node(cmark_node *node, cmark_event_type ev_type,
     cmark_strbuf_puts(xml, cmark_node_get_type_string(node));
 
     if (options & CMARK_OPT_SOURCEPOS && node->start_line != 0) {
-      snprintf(buffer, BUFFER_SIZE, " sourcepos=\"%d:%d-%d:%d\"",
-               node->start_line, node->start_column, node->end_line,
-               node->end_column);
+      sprintf(buffer, " sourcepos=\"%d:%d-%d:%d\"", node->start_line,
+              node->start_column, node->end_line, node->end_column);
       cmark_strbuf_puts(xml, buffer);
     }
 
@@ -60,7 +57,7 @@ static int S_render_node(cmark_node *node, cmark_event_type ev_type,
     case CMARK_NODE_CODE:
     case CMARK_NODE_HTML_BLOCK:
     case CMARK_NODE_HTML_INLINE:
-      cmark_strbuf_puts(xml, " xml:space=\"preserve\">");
+      cmark_strbuf_puts(xml, ">");
       escape_xml(xml, node->as.literal.data, node->as.literal.len);
       cmark_strbuf_puts(xml, "</");
       cmark_strbuf_puts(xml, cmark_node_get_type_string(node));
@@ -70,8 +67,7 @@ static int S_render_node(cmark_node *node, cmark_event_type ev_type,
       switch (cmark_node_get_list_type(node)) {
       case CMARK_ORDERED_LIST:
         cmark_strbuf_puts(xml, " type=\"ordered\"");
-        snprintf(buffer, BUFFER_SIZE, " start=\"%d\"",
-                 cmark_node_get_list_start(node));
+        sprintf(buffer, " start=\"%d\"", cmark_node_get_list_start(node));
         cmark_strbuf_puts(xml, buffer);
         delim = cmark_node_get_list_delim(node);
         if (delim == CMARK_PAREN_DELIM) {
@@ -86,12 +82,12 @@ static int S_render_node(cmark_node *node, cmark_event_type ev_type,
       default:
         break;
       }
-      snprintf(buffer, BUFFER_SIZE, " tight=\"%s\"",
-               (cmark_node_get_list_tight(node) ? "true" : "false"));
+      sprintf(buffer, " tight=\"%s\"",
+              (cmark_node_get_list_tight(node) ? "true" : "false"));
       cmark_strbuf_puts(xml, buffer);
       break;
     case CMARK_NODE_HEADING:
-      snprintf(buffer, BUFFER_SIZE, " level=\"%d\"", node->as.heading.level);
+      sprintf(buffer, " level=\"%d\"", node->as.heading.level);
       cmark_strbuf_puts(xml, buffer);
       break;
     case CMARK_NODE_CODE_BLOCK:
@@ -100,7 +96,7 @@ static int S_render_node(cmark_node *node, cmark_event_type ev_type,
         escape_xml(xml, node->as.code.info.data, node->as.code.info.len);
         cmark_strbuf_putc(xml, '"');
       }
-      cmark_strbuf_puts(xml, " xml:space=\"preserve\">");
+      cmark_strbuf_puts(xml, ">");
       escape_xml(xml, node->as.code.literal.data, node->as.code.literal.len);
       cmark_strbuf_puts(xml, "</");
       cmark_strbuf_puts(xml, cmark_node_get_type_string(node));
@@ -149,7 +145,7 @@ static int S_render_node(cmark_node *node, cmark_event_type ev_type,
 
 char *cmark_render_xml(cmark_node *root, int options) {
   char *result;
-  cmark_strbuf xml = CMARK_BUF_INIT(cmark_node_mem(root));
+  cmark_strbuf xml = GH_BUF_INIT;
   cmark_event_type ev_type;
   cmark_node *cur;
   struct render_state state = {&xml, 0};
