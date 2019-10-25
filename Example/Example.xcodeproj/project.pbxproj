@@ -430,7 +430,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/URBNMrkDwn-iOS/URBNMrkDwn.framework",
 				"${BUILT_PRODUCTS_DIR}/URBNcmark-iOS/URBNcmark.framework",
 			);
@@ -441,7 +441,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AE39979AE62B8E1DCE1018DD /* [CP] Check Pods Manifest.lock */ = {
@@ -468,7 +468,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TVExample/Pods-TVExample-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TVExample/Pods-TVExample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/URBNMrkDwn-tvOS/URBNMrkDwn.framework",
 				"${BUILT_PRODUCTS_DIR}/URBNcmark-tvOS/URBNcmark.framework",
 			);
@@ -479,7 +479,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TVExample/Pods-TVExample-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TVExample/Pods-TVExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EBD9F1EF4080D40DBEBDE781 /* [CP] Check Pods Manifest.lock */ = {
