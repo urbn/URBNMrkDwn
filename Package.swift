@@ -20,6 +20,9 @@ let package = Package(
                 path: "Sources/cmark"),
         .target(name: "URBNMrkDwn",
                 dependencies: ["URBNcmark"],
-                path: "Sources/URBNMrkDwn")
+                path: "Sources/URBNMrkDwn"),
+        .testTarget(
+            name: "URBNMrkDwnTests",
+            dependencies: ["URBNMrkDwn"], path: "Example/ExampleTests")
     ]
 )
