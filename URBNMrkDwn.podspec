@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'URBNMrkDwn'
-  s.version          = '1.2'
+  s.version          = '1.3'
   s.summary          = 'Swifty Markdown inspired by CocoaMarkdown.'
 
 # This description is used to generate tags and improve search results.
@@ -28,9 +28,9 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
   s.ios.framework = 'UIKit'
   s.requires_arc  = true
-  s.swift_version = '4.2'
+  s.swift_version = '5.0'
 
-  s.source_files = 'URBNMrkDwn/Classes/**/*'
+  s.source_files = 'Sources/URBNMrkDwn/*'
 
   s.dependency 'URBNcmark'
 

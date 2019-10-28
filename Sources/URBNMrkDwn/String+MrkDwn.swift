@@ -19,7 +19,7 @@ public extension String {
      
      - returns: An OpaquePointer for the AST
      */
-    public func toAST(withOptions options: MrkDwnOptions = .default) throws -> OpaquePointer {
+    func toAST(withOptions options: MrkDwnOptions = .default) throws -> OpaquePointer {
         return try MrkDwnRenderers.renderASTFromMarkdown(self, options: options)
     }
     
@@ -32,7 +32,7 @@ public extension String {
      
      - returns: An HTML String
      */
-    public func toHTML(withOptions options: MrkDwnOptions = .default) throws -> String {
+    func toHTML(withOptions options: MrkDwnOptions = .default) throws -> String {
         return try MrkDwnRenderers.renderHTMLFromMarkdown(self, options: options)
     }
 }
